@@ -52,7 +52,7 @@ Navigate to http://localhost:8000/upload.php in your web browser to upload PDF f
 # Usage
 ### Upload PDF Files
 ### Navigate to the upload page and select the PDF files you want to process. Click the "Upload PDFs" button to start the upload and processing.
-<!DOCTYPE html><br>
+```<!DOCTYPE html><br>
 <html lang="en"><br>
 <head><br>
     <meta charset="UTF-8"><br>
@@ -65,7 +65,7 @@ Navigate to http://localhost:8000/upload.php in your web browser to upload PDF f
         <button type="submit">Upload PDFs</button><br>
     </form><br>
 </body><br>
-</html><br>
+</html><br>```
 
 # Processing PDFs
 ### The uploaded PDFs are converted to text, and the text is sent to the ChatGPT API for parsing. The extracted details are then stored in the MySQL database.
