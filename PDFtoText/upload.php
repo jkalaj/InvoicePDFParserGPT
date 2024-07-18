@@ -7,15 +7,15 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
 $servername = "localhost";
-$username = "root";
-$password = "Jkala12345!";
+$username = "Your DB Username";
+$password = "Your DB Password";
 $database = "pdf_parsed_data";
 
 
 //Preprocess pdf to text
 function convertPdfToText($pdfPath, $txtPath) {
     //Use absolute path to pdftotext
-    $pdftotextPath = 'C:/Users/JozefKalaj/xpdf-tools-win-4.05/xpdf-tools-win-4.05/bin64/pdftotext.exe';  //runs on the server so server should contain this library 
+    $pdftotextPath = 'path-to-xpdf-lib/xpdf-tools-win-4.05/xpdf-tools-win-4.05/bin64/pdftotext.exe';  //runs on the server so server should contain this library 
     
     //Command to convert PDF to text using pdftotext
     $command = "{$pdftotextPath} \"{$pdfPath}\" \"{$txtPath}\"";
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFiles'])) {
                 convertPdfToText($pdfPath, $txtPath);
                 $text = file_get_contents($txtPath); 
 
-                $apiKey = 'sk-proj-QHbO25C6qyUS4aL0nIidT3BlbkFJzLwv2266zNYFEdnrQkth';
+                $apiKey = 'YOUR_API_KEY';
                 $parsedDetails = parseInvoiceDetails($text, $apiKey);
                 $output = 'outputFile.txt';
                 file_put_contents($output, $parsedDetails);
