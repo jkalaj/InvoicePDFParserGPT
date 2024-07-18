@@ -15,7 +15,7 @@ $database = "pdf_parsed_data";
 //Preprocess pdf to text
 function convertPdfToText($pdfPath, $txtPath) {
     //Use absolute path to pdftotext
-    $pdftotextPath = 'path-to-xpdf-lib/xpdf-tools-win-4.05/xpdf-tools-win-4.05/bin64/pdftotext.exe';  //runs on the server so server should contain this library 
+    $pdftotextPath = 'path-to-xpdf-lib/xpdf-tools-win-4.05/xpdf-tools-win-4.05/bin64/pdftotext.exe';  //replace with your actual path
     
     //Command to convert PDF to text using pdftotext
     $command = "{$pdftotextPath} \"{$pdfPath}\" \"{$txtPath}\"";
@@ -55,7 +55,7 @@ function parseInvoiceDetails($extractedText, $apiKey) {
                 'Content-Type' => 'application/json',
             ],
             'json' => $data,
-            'verify' => 'C:/certs/cacert.pem'  // Path to the CA certificate bundle
+            'verify' => 'C:/certs/cacert.pem'  //Path to the CA certificate bundle
         ]);
 
         $body = $response->getBody();
@@ -87,18 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFiles'])) {
     foreach ($_FILES['pdfFiles']['tmp_name'] as $index => $tmpName) {
         if (!empty($tmpName) && is_uploaded_file($tmpName)) {
             $pdfPath = $tmpName;
-            $txtPath = 'temp/output' . $index . '.txt'; // Adjust path and add a unique identifier
+            $txtPath = 'temp/output' . $index . '.txt'; //path to output file for pdftotxt
 
             try {
                 convertPdfToText($pdfPath, $txtPath);
                 $text = file_get_contents($txtPath); 
 
-                $apiKey = 'YOUR_API_KEY';
-                $parsedDetails = parseInvoiceDetails($text, $apiKey);
+                $apiKey = 'YOUR_API_KEY';  //Replace with your OpenAI API key 
+                $parsedDetails = parseInvoiceDetails($text, $apiKey); //pass output of pdftotxt and api key to GPT
                 $output = 'outputFile.txt';
                 file_put_contents($output, $parsedDetails);
 
-                // Determine whether the content is comma-separated or line-separated
+                //Determine whether the content is comma-separated or line-separated
                 $fileContent = file_get_contents($output);
                 if (strpos($fileContent, ',') !== false) {
                     $lines = explode(',', $fileContent);
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFiles'])) {
                 $lines = array_map('trim', $lines);
 
                 
-                // Initialize variables
+                //Initialize variables
                     $invNum = null;
                     $invDate = null;
                     $poNum = null;
@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFiles'])) {
                     $taxes = null;
                     $freight = null;
 
-                // Assign values to variables
+                //Assign values to variables per the line it should be on
                 if (count($lines) >= 6) {
                     $invNum = $lines[0];
                     $invDate = $lines[1];
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFiles'])) {
                     $freight = $lines[5];
                 }
 
-                // Insert data into the database
+                //Insert data into the database
                 $db_link = new mysqli($servername, $username, $password, $database);
                 $stmt = $db_link->prepare("INSERT INTO invoice_data (InvoiceNumber, InvoiceDate, PONumber, TotalPrice, Taxes, Freight) VALUES (?, ?, ?, ?, ?, ?)");
                 $stmt->bind_param("ssssss", $invNum, $invDate, $poNum, $totalPrice, $taxes, $freight);
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFiles'])) {
 
                 
 
-                // Delete the temporary output file
+                //Delete the temporary output file
                 if (is_file($txtPath)) {
                     unlink($txtPath);
                 }
@@ -165,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdfFiles'])) {
 
 
 
-
+//Stupid html for simple testing with forms
 <!DOCTYPE html>
 <!--HTML Format-->
 <html lang="en">
