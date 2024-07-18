@@ -1,18 +1,18 @@
 # PDF Invoice Parser
-## This repository contains a PHP application that processes PDF invoices, converts them to text using the xpdf library, and then uses the ChatGPT API to parse and extract specific invoice details. The extracted details are then stored in a MySQL database. This tool simplifies the extraction of structured data from messy PDF files, making it easier to handle invoice processing.
+This repository contains a PHP application that processes PDF invoices, converts them to text using the xpdf library, and then uses the ChatGPT API to parse and extract specific invoice details. The extracted details are then stored in a MySQL database. This tool simplifies the extraction of structured data from messy PDF files, making it easier to handle invoice processing.
 
 # Features
-## Converts PDF files to text using xpdf
-## Extracts invoice details using the ChatGPT API
-## Stores extracted data in a MySQL database
-## Supports multiple PDF file uploads
+Converts PDF files to text using xpdf
+Extracts invoice details using the ChatGPT API
+Stores extracted data in a MySQL database
+Supports multiple PDF file uploads
 
 # Dependencies
-## PHP
-## Composer
-## xpdf (pdftotext)
-## Spatie PDF to Text
-## Guzzle HTTP
+PHP
+Composer
+xpdf (pdftotext)
+Spatie PDF to Text
+Guzzle HTTP
 
 # Installation
 ## 1. Install PHP and Composer
