@@ -65,8 +65,8 @@ Navigate to http://localhost:8000/upload.php in your web browser to upload PDF f
         <button type="submit">Upload PDFs</button><br>
     </form><br>
 </body><br>
-</html><br>```
-
+</html><br>
+```
 # Processing PDFs
 ### The uploaded PDFs are converted to text, and the text is sent to the ChatGPT API for parsing. The extracted details are then stored in the MySQL database.
 
