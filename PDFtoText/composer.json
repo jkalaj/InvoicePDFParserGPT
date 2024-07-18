@@ -1,0 +1,7 @@
+{
+    "require": {
+        "spatie/pdf-to-text": "^1.52",
+        "aymanrb/php-unstructured-text-parser": "^2.5",
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}
