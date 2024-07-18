@@ -11,7 +11,6 @@ Supports multiple PDF file uploads<br>
 PHP<br>
 Composer<br>
 xpdf (pdftotext)<br>
-Spatie PDF to Text<br>
 Guzzle HTTP (any http client will do although processing time varies)<br>
 
 # Installation
@@ -23,7 +22,7 @@ Download and install the xpdf tools from xpdfreader.com.
 
 ### 3. Install PHP dependencies
 Navigate to your project directory and run:<br>
-composer require spatie/pdf-to-text guzzlehttp/guzzle
+composer require guzzlehttp/guzzle
 
 ### 4. Setup MySQL Database
 Create a MySQL database and table for storing the parsed invoice data:<br>
