@@ -1,1 +1,0 @@
-GPT IS THE GOAT
