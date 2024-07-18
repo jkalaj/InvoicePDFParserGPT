@@ -12,7 +12,7 @@ PHP<br>
 Composer<br>
 xpdf (pdftotext)<br>
 Spatie PDF to Text<br>
-Guzzle HTTP<br>
+Guzzle HTTP (any http client will do although processing time varies)<br>
 
 # Installation
 ### 1. Install PHP and Composer
@@ -52,7 +52,6 @@ Navigate to http://localhost:8000/upload.php in your web browser to upload PDF f
 # Usage
 ### Upload PDF Files
 ### Navigate to the upload page and select the PDF files you want to process. Click the "Upload PDFs" button to start the upload and processing.
-
 <!DOCTYPE html><br>
 <html lang="en"><br>
 <head><br>
